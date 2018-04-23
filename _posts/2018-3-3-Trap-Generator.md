@@ -114,9 +114,9 @@ This very quickly runs into the vanishing gradient problem, and because of this,
 **Long Short Term Memory Networks**
 ------
 
-When you are trying to create cohesive lyrics, you need to remember things like the chorus, that may have happened several sequences before the currently predicted one. A simple RNN has no capability of knowing what is important, so it would not know that a chorus is important and would need to be remembered so that it could be repeated after a verse.
+When you are trying to create cohesive lyrics, you need to remember things like the chorus, that may have happened several sequences before the current sequence. A simple RNN has no capability of learning what pieces of information are important, so it would not know that a chorus is important and would need to be remembered so that it could be repeated after a verse.
 
-This is where a Long Short Term Memory (LSTM) network comes in to place. LSTM models are an extension of Recurrent Neural Networks that include the ability to determine what is important to remember. This is done through two additional trainable gates: *forget gates* and *input gates*.
+This is where a Long Short Term Memory (LSTM) network comes in to place. LSTM models are an extension of Recurrent Neural Networks developed by [Hochreiter & Schmidhuber (1997)](http://www.bioinf.jku.at/publications/older/2604.pdf) that include the ability to determine what is important to remember. This is done through two additional trainable layers: *forget gates* and *input gates*.
 
 *Forget Gates*
 
