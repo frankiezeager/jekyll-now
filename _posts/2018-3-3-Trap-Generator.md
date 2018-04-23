@@ -109,7 +109,7 @@ Recurrent neural networks (RNN) try to solve the problem of learning over time t
 
 A recurrent neural network does this by essentially stacking the hidden layers, so that the input to the activation function (A in the below graph) includes the input from the current time step *and* the previous timestep. 
 
-This very quickly runs into the vanishing gradient problem, and because of this, the model becomes unable to learn over many time steps. Furthermore, it has no mechanism for determining whether or not the information is important.
+This very quickly runs into the vanishing (or exploding) gradient problem, and because of this, the model becomes unable to learn over many time steps. Furthermore, it has no mechanism for determining whether or not the information is important.
 
 **Long Short Term Memory Networks**
 ------
