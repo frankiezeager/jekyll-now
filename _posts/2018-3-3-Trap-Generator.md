@@ -401,8 +401,7 @@ print('Run `tensorboard --logdir=%s` to see the results.' % './' + model_name)
 
 **Results**
 ------
-
-Here are a few of my favorite lines that were generated using this model:
+Trap music proved to be significantly harder to train than I had hoped, especially given all the criticisms about it being a formulaic genre. Here are a few of the lines that were generated using this model:
 
 *killer girls in my rental/
 lookin like me/
