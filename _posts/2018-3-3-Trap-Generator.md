@@ -116,19 +116,23 @@ This very quickly runs into the vanishing (or exploding) gradient problem, and b
 
 When you are trying to create cohesive lyrics, you need to remember things like the chorus, that may have happened several sequences before the current sequence. A simple RNN has no capability of learning what pieces of information are important, so it would not know that a chorus is important and would need to be remembered so that it could be repeated after a verse.
 
-This is where a Long Short Term Memory (LSTM) network comes in to place. LSTM models are an extension of Recurrent Neural Networks developed by [Hochreiter & Schmidhuber (1997)](http://www.bioinf.jku.at/publications/older/2604.pdf) that include the ability to determine what is important to remember. This is done through two additional trainable layers: *forget gates* and *input gates*.
+This is where a Long Short Term Memory (LSTM) network comes in to place. LSTM models are an extension of Recurrent Neural Networks developed by [Hochreiter & Schmidhuber (1997)](http://www.bioinf.jku.at/publications/older/2604.pdf) that include the ability to determine what is important to remember. The cell state is a state that is updated throughout the LSTM model, where the updates to what is necessary to be remembered or forgotten is stored. The updates of the cell state are done through three additional trainable layers: *forget gates*, *input gates*, and *output gates*.
 
 *Forget Gates*
 
-Forget gates allow the model to ‘forget’ the hidden state from the previous time step. Much like how you dump most of the information from you memory moments after the final exam, this forget gate essentially allows the model to learn what is important and what isn’t important to remember. 
+The first step in the LSTM model is to decide which information to throw away. For example, the model needs to know the subject of the current sentence. Forget gates would allow the model to ‘forget’ the subject of the previous sentence first. So the model's forget gate may learn that when it sees a new subject of a sentence, it can forget the subject that it was previously remembering. Through the forget gate, the subject of the sentence will be forgotten and updated in the cell state.
 
 *Input Gates*
 
-Input gates allow the LSTM model to decide whether or not to update the current hidden state using the data from the previous state. This is a gate that prevents unnecessary information to have an impact on the output for the current time step. This is sort of analogous to hearing a professor say “this won’t be on the next exam, but it may be on the final,” and you  immediately stop using learning any of the information for the current test (which in this case would be the current time step), but you keep it in your notebook in case it’s important for the final exam (which could be any future time step).
+Input gates allow the LSTM model to decide whether or not to update the current hidden state using the data from the previous timesteps. In our previous example, our model forgot the subject of the previous sentence, but it needs to update this information with the subject of the current sentence. Through the input gate, the subject of the current sentence will be updated in the cell state.
 
-All of these gates are trainable weights, just like the weights of the hidden layers of a neural network.
+*Output Gates*
 
-If you want to learn about RNN/LSTM networks and how they work, I can’t recommend Andrej Karpathy’s [post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) on the effectiveness of RNN's enough.
+Output gates allow the model to determine what will be necessary to output for the next prediction. For example, after seeing the subject, the model may want to output something related to the verb that might change the conjugation, such as if the subject is singular or plural, etc. 
+
+All of these gates are trainable layers, just like the weights of the hidden layers of a neural network.
+
+If you want to learn about RNN/LSTM networks and how they work, I can’t recommend Andrej Karpathy’s [post on the effectiveness of RNN's](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) or Christopher Olah's [explanation on LSTMs](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) enough. I got a lot of my examples for the forget/input/output gates from the latter blog post.
 
 **Code**
 ------
