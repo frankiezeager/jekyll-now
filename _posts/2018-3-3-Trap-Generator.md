@@ -412,10 +412,10 @@ lookin like me/
 eyepatch irwing on the double six/ 
 got a trap on nomination*
 
-*i dont know motherf***** man thats a thousand in dongs/ 
+_i dont know motherf***** man thats a thousand in dongs/ 
  thousand dollar cashews widows ya/
  you a lot/
- fools are the from atlanta*
+ fools are the from atlanta_
 
 Overall, the results don't seem exactly like a real trap song in the least (nor do they seem to make any sense), which goes to show that trap music isn't really as formulaic as the music critics complain about. This certainly was a fun side project, but I think the overall model could have definitely been improved with:
 1. More money (any one know how to dispute a $300 AWS charge??). But no joke, an AWS EC2 instance with a GPU is expensive, and limited the number of model architectures I could test.
