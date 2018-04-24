@@ -9,8 +9,8 @@ If you’re not interested in getting into the technical details of this project
 
 *Warning: This post will have some foul language (just the nature of the data)*
 
-**Intro to the Trap Music Genre**
-------
+## Intro to the Trap Music Genre
+
 
 Trap music is a sub genre of hip hop, which emerged in the early aughts with Atlanta-based rappers like Young Jeezy and Gucci Mane and now includes rappers like Lil Yachty and Migos. Its subject matter often descries the cycle of poverty and the ‘trap’ (a place where drugs are dealt). In addition to the subject matter of the lyrics, trap music also has common lyrical and beat characteristics throughout the genre, which has given it the reputation for being repetitive and formulaic amongst music critics and fans:
 
@@ -26,8 +26,8 @@ Versace, Versace, Medusa head on me like I'm 'Luminati*
 
 So I sought out to see: if trap music is *really* so easy to produce, could a computer write convincing trap lyrics?
 
-**The Problem**
-------
+## The Problem
+
 
 In this text generation problem, I am essentially trying to predict the next word given a sequence of words, although character-level models have been shown to be very effective in text generation as well.
 
@@ -39,15 +39,13 @@ So in this case, we’d like to feed in the input sequence ‘The quick brown fo
 
 By moving this window of input sequences as we predict more words, the model can generate an entire text based on the data it was trained on.
 
-**The Data**
-------
+## The Data
 
 The first thing you need to train such a model is a large database of sequences like the ones above to train on. There’s no common database for trap lyrics, so for this model I created a simple web scraper to scrape lyrics from AZLyrics for a selection of hand-selected trap artists. I scraped the entire discography of 31 atists for this project. These were further broken down into five word sequences (the input sequence), with a corresponding output word, which created about 500,000 unique training examples. 
 
-**Explaining the Model**
-------
+## Explaining the Model
 
-**Word2Vec**
+### Word2Vec
 
 The model is trying to predict one word out of the 34,000 unique words in the training data, but if you one-hot encode the data, it has no context into how words relate to one another and the definition of words. Let’s take the previous sentence as an example: the quick brown fox jumped over the lazy dog. If fox was replaced by a very similar word, like foxes, the model would treat that word as an entirely different word. This would make training a text generation model extremely difficult. 
 
@@ -90,8 +88,7 @@ w2vmodel = Word2Vec(lines,min_count=1,iter=200)
 
 {% endhighlight %}
 
-**Plain “Vanilla” Neural Network**
-------
+### Plain “Vanilla” Neural Network
 
 ![_config.yml]({{ site.baseurl }}/images/trap_images/3.png)
 
@@ -99,8 +96,8 @@ Neural networks have become some of the best models for more complex problems in
 
 The problem with the simple, feed-forward vanilla neural network shown above for text generation is that they don’t take into account features learned over different parts of the input text, which is important for something sequential like text.
 
-**Recurrent Neural Network**
-------
+### Recurrent Neural Network
+
 ![_config.yml]({{ site.baseurl }}/images/trap_images/4.png)
 
 Recurrent neural networks (RNN) try to solve the problem of learning over time that is present in a vanilla neural network. In a nutshell, the recurrent neural network takes information from the prior time steps and the current time step, where the feed-forward neural network can only take information from the current timestep. 
@@ -111,8 +108,7 @@ A recurrent neural network does this by essentially stacking the hidden layers, 
 
 This very quickly runs into the vanishing (or exploding) gradient problem, and because of this, the model becomes unable to learn over many time steps. Furthermore, it has no mechanism for determining whether or not the information is important.
 
-**Long Short Term Memory Networks**
-------
+### Long Short Term Memory Networks
 
 When you are trying to create cohesive lyrics, you need to remember things like the chorus, that may have happened several sequences before the current sequence. A simple RNN has no capability of learning what pieces of information are important, so it would not know that a chorus is important and would need to be remembered so that it could be repeated after a verse.
 
@@ -134,8 +130,7 @@ All of these gates are trainable layers, just like the weights of the hidden lay
 
 If you want to learn about RNN/LSTM networks and how they work, I can’t recommend Andrej Karpathy’s [post on the effectiveness of RNN's](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) or Christopher Olah's [explanation on LSTMs](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) enough. I got a lot of my examples for the forget/input/output gates from the latter blog post.
 
-**Code**
-------
+## Code
 
 Because I wanted to use a Word2Vec embedding for the words, we have to first create a mapping from the word to the corresponding index from the word to vector model. The following functions load the word2vec mode and translate between the word2vec embedding index and the word itself.
 
@@ -403,8 +398,8 @@ print('Done training!')
 print('Run `tensorboard --logdir=%s` to see the results.' % './' + model_name)
 {% endhighlight %}
 
-**Results**
-------
+## Results
+
 Trap music proved to be significantly harder to train than I had hoped, especially given all the criticisms about it being a formulaic genre. Here are a few of the lines that were generated using this model:
 
 *killer girls in my rental/
