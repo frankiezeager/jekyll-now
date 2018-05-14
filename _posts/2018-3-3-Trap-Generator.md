@@ -5,7 +5,7 @@ title: Deep Learning Trap Lyric Generator, or, How Trap Music is not as Formulai
 ![_config.yml]({{ site.baseurl }}/images/trap_house.jpg)
 *2 Chainz's Pink Trap House in Atlanta, GA*
 
-If you’re not interested in getting into the technical details of this project and just want to play around with generating your own trap lyrics, you can use the web app I created [here](http://trap-generator.zeager.xyz).
+If you’re not interested in getting into the technical details of this project and just want to play around with generating your own trap lyrics, you can use the web app I created [here](http://trap-generator.zeager.xyz). If you'd like to check out the code, it's available [here](https://github.com/frankiezeager/trap_generator)
 
 *Warning: This post will have some foul language (just the nature of the data)*
 
@@ -41,7 +41,7 @@ By moving this window of input sequences as we predict more words, the model can
 
 ## The Data
 
-The first thing you need to train such a model is a large database of sequences like the ones above to train on. There’s no common database for trap lyrics, so for this model I created a simple web scraper to scrape lyrics from AZLyrics for a selection of hand-selected trap artists. I scraped the entire discography of 31 atists for this project. These were further broken down into five word sequences (the input sequence), with a corresponding output word, which created about 500,000 unique training examples. 
+The first thing you need to train such a model is a large database of sequences like the ones above to train on. There’s no common database for trap lyrics, so for this model I created a simple web scraper to scrape lyrics from AZLyrics for a selection of hand-selected trap artists. I scraped the entire discography of 31 artists for this project. After much cleaning and munging, these lyrics were further broken down into five word sequences (the input sequence), with a corresponding output word, which created about 500,000 unique training examples. 
 
 ## Explaining the Model
 
