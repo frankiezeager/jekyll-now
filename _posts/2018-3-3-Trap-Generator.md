@@ -7,8 +7,6 @@ title: Deep Learning Trap Lyric Generator, or, How Trap Music is not as Formulai
 
 If you’re not interested in getting into the technical details of this project and just want to play around with generating your own trap lyrics, you can use the web app I created [here](http://trap-generator.zeager.xyz). If you'd like to check out the code, it's available [here](https://github.com/frankiezeager/trap_generator)
 
-*Warning: This post will have some foul language (just the nature of the data)*
-
 ## Intro to the Trap Music Genre
 
 
