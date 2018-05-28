@@ -15,7 +15,7 @@ app = flask.Flask(__name__)
 #....
 if __name__ == '__main__':
     app.run()
-{% endhihlight %} 
+{% endhighlight %} 
 
 You will need to change the code to use the word application like so.
 {% highlight python %} 
@@ -25,3 +25,46 @@ if __name__ == '__main__':
     application.run()
 {% endhighlight %}
 
+You also need to change the name of the application python file to `application.py`.
+
+## Remove Runtime.txt (optional)
+With Elastic Beanstalk, you no longer need the runtime.txt file you needed with Heroku. Feel free to delete it (totally optional).
+
+## Install EBS Command Line Tools
+To deploy your application, you'll need to first install the AWS Elastic Beanstalk CLI, which is different than the basic AWS CLI. To do this, just simply run `pip install awsebcli --upgrade --user` The `upgrade` option simply upgrade any requirements necessary, and the `user` option installs the CLI in your user folder to avoid any errors related to editing libraries. 
+
+## Configure Application
+Navigate to your application directory (where your requirements.txt file and the application.py files live), and write `eb init` at the command line. 
+{% highlight bash %}
+
+Select a default region
+1) us-east-1 : US East (N. Virginia)
+2) us-west-1 : US West (N. California)
+3) us-west-2 : US West (Oregon)
+...
+14) us-east-2 : US East (Ohio)
+15) ca-central-1 : Canada (Central)
+16) eu-west-2 : EU (London)
+17) eu-west-3 : EU (Paris)
+(default is 3): 14
+
+Select an application to use
+1) [ Create new Application ]
+(default is 1): 1
+
+It appears you are using Python. Is this correct?
+(Y/n): Y
+
+Select a platform version.
+1) Python 3.6
+2) Python 3.4
+3) Python 3.4 (Preconfigured - Docker)
+4) Python 2.7
+5) Python
+(default is 1): 1
+Cannot setup CodeCommit because there is no Source Control setup, continuing with initialization
+{% endhighlight %}
+
+You can also set up SSH access for your instances, which may be helpful to diagnose any issues you run into.
+
+## Configure 
