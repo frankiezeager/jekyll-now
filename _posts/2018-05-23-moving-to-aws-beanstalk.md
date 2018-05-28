@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Moving a Flask Machine Learning App from Heroku to AWS Elastic Beanstalk
+title: Moving a Flask App from Heroku to AWS Elastic Beanstalk
 ---
 ![_config.yml]({{ site.baseurl }}/images/aws_beanstalk.png)
 
@@ -77,11 +77,13 @@ $ eb config
 {% endhighlight %}
 
 You'll need to change your WSGI path in the config file that is opened. You'll need to changeg the WSGIPath to the relative path for your application.py file within the directory. For example, my `application.py` file is at the root of my application directory so mine looks like this:
-```  aws:elasticbeanstalk:container:python:
+{% highlight bash %}
+aws:elasticbeanstalk:container:python:
     NumProcesses: '1'
     NumThreads: '15'
     StaticFiles: /static/=static/
-    WSGIPath: application.py ```
+    WSGIPath: application.py
+{% endhighlight %}
     
 If you want to change your instance type, you can also change it in this config file.
 
