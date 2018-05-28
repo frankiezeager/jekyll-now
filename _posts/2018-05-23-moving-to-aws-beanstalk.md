@@ -33,10 +33,11 @@ With Elastic Beanstalk, you no longer need the runtime.txt file you needed with 
 ## Install EBS Command Line Tools
 To deploy your application, you'll need to first install the AWS Elastic Beanstalk CLI, which is different than the basic AWS CLI. To do this, just simply run `pip install awsebcli --upgrade --user` The `upgrade` option simply upgrade any requirements necessary, and the `user` option installs the CLI in your user folder to avoid any errors related to editing libraries. 
 
-## Configure Application
-Navigate to your application directory (where your requirements.txt file and the application.py files live), and write `eb init` at the command line. 
-{% highlight bash %}
+## Initialize Application with EBS CLI
+Navigate to your application directory (where your requirements.txt file and the application.py files live) so you can initialize and create your application using the EBS CLI. You need to have it initialized as a git repository before you do this, so make sure to do that first if you haven't already.
 
+{% highlight bash %}
+$ eb init
 Select a default region
 1) us-east-1 : US East (N. Virginia)
 2) us-west-1 : US West (N. California)
@@ -67,4 +68,30 @@ Cannot setup CodeCommit because there is no Source Control setup, continuing wit
 
 You can also set up SSH access for your instances, which may be helpful to diagnose any issues you run into.
 
-## Configure 
+You also need to create the elastic beanstalk application, using the following at the command line.
+
+## Configure your WSGI Path
+You'll now have to configure your WSI path and instance type for your deployed application. Using this command, you'll open up the config file for your application.
+{% highlight bash %}
+$ eb config
+{% endhighlight %}
+
+You'll need to change your WSGI path in the config file that is opened. You'll need to changeg the WSGIPath to the relative path for your application.py file within the directory. For example, my `application.py` file is at the root of my application directory so mine looks like this:
+```  aws:elasticbeanstalk:container:python:
+    NumProcesses: '1'
+    NumThreads: '15'
+    StaticFiles: /static/=static/
+    WSGIPath: application.py ```
+    
+If you want to change your instance type, you can also change it in this config file.
+
+## Create and Environment and Deploy Your App 
+Commit all your changes, and then create and deploy your applicatoin.
+{% highlight bash %}
+$ eb create app_name --interactive
+{% endhighlight %}
+
+## You're all set and it should have been deployed! 
+
+If you have any issues, you can always check out the AWS documentation [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html).
+
