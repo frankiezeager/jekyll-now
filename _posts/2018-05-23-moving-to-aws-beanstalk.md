@@ -93,7 +93,9 @@ Commit all your changes, and then create and deploy your applicatoin.
 $ eb create app_name --interactive
 {% endhighlight %}
 
-## You're all set and it should have been deployed! 
+## You're all set to deploy!
+
+Run a simple `eb deploy` to archive your app version and deploy your application.
 
 If you have any issues, you can always check out the AWS documentation [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html).
 
