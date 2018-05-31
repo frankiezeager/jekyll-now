@@ -68,8 +68,6 @@ Select a platform version.
 
 You can also set up SSH access for your instances, which may be helpful to diagnose any issues you run into.
 
-You also need to create the elastic beanstalk application, using the following at the command line.
-
 ## Configure your WSGI Path
 You'll now have to configure your WSI path and instance type for your deployed application. Using this command, you'll open up the config file for your application.
 {% highlight bash %}
