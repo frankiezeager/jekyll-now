@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Moving a Flask App from Heroku to AWS Elastic Beanstalk: Common Migration Issues
+title: Moving a Flask App from Heroku to AWS Elastic Beanstalk 
 ---
 ![_config.yml]({{ site.baseurl }}/images/aws_beanstalk.png)
 
