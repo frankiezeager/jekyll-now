@@ -6,7 +6,7 @@ title: Moving a Flask App from Heroku to AWS Elastic Beanstalk
 
 Earlier, I wrote a post about converting a deep learning python project to [Flask and Heroku](http://zeager.xyz/heroku/), but I soon found the Heroku platform a bit inflexible and expensive for the computational requirements for a machine learning application. In order for there to be no memory error when running an RNN LSTM model, I needed to use at least one Standard-2X Dyno, which ended up being $50/ month, but it was still too slow to not be timed out by Heroku's automatic time-out feature. Ultimately, to run successfully without being timed out, it would end up being around $200/month, which is a little expensive for a simple hobby project. 
 
-AWS Elastic Beanstalk allows the flexibility of the multitude of memory/cpu/gpu combinations of AWS EC2, and you only have to pay the hourly cost for the EC2 instance. Of course, there were some major headaches with the transition from Heroku to AWS Elastic Beanstalk, so I'll detail them here in this post.
+AWS Elastic Beanstalk allows the flexibility of the multitude of memory/cpu/gpu combinations of AWS EC2, and you only have to pay the hourly cost for the EC2 instance. As there always are, there were some major headaches with the transition from Heroku to AWS Elastic Beanstalk, so I'll detail them here in this post.
 
 ## Change the name of your Flask application
 One major headache is that AWS Elastic Beanstalk will only recognize your Flask app if it's called *application* in your code. That means, instead of 
@@ -63,7 +63,7 @@ Select a platform version.
 4) Python 2.7
 5) Python
 (default is 1): 1
-Cannot setup CodeCommit because there is no Source Control setup, continuing with initialization
+...
 {% endhighlight %}
 
 You can also set up SSH access for your instances, which may be helpful to diagnose any issues you run into.
@@ -88,14 +88,14 @@ aws:elasticbeanstalk:container:python:
 If you want to change your instance type, you can also change it in this config file.
 
 ## Create and Environment and Deploy Your App 
-Commit all your changes, and then create and deploy your applicatoin.
+Commit all your changes, and then create and deploy your application.
 {% highlight bash %}
 $ eb create app_name --interactive
 {% endhighlight %}
 
 ## You're all set to deploy!
 
-Run a simple `eb deploy` to archive your app version and deploy your application.
+Run a simple `eb deploy` to save your app version and deploy your application.
 
 If you have any issues, you can always check out the AWS documentation [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html).
 
