@@ -5,7 +5,7 @@ title: Deep Learning Trap Lyric Generator, or, How Trap Music is not as Formulai
 ![_config.yml]({{ site.baseurl }}/images/trap_house.jpg)
 *2 Chainz's Pink Trap House in Atlanta, GA*
 
-If you’re not interested in getting into the technical details of this project and just want to play around with generating your own trap lyrics, you can use the web app I created [here (I've taken it down for cost reasons, but I'll be putting a less resource intense version up soon!)](http://trap-generator.zeager.xyz). If you'd like to check out the code, it's available [here](https://github.com/frankiezeager/trap_generator)
+If you’re not interested in getting into the technical details of this project and just want to test your trap knowledge by guessing which lyrics are computer generated, you can use the web app I created [here](http://trap-generator.zeager.xyz). If you'd like to check out the code, it's available [here](https://github.com/frankiezeager/trap_generator)
 
 ## Intro to the Trap Music Genre
 
@@ -415,4 +415,4 @@ Overall, the results don't seem exactly like a real trap song in the least (nor 
 2. A character-based RNN model over the word-level model I used in this example. I thought the word level word2vec input would allow the model to have more context for the songs it was generating, but I think having a 30,000+ word vocabulary size vs a 26+ character vocabulary size made it *much* more difficult to train.
 3. More data. Although 500,000 sequences as input *seems* like a lot of data, I'm not sure it was enough for the model to learn. Think about it; the model has to learn english syntax, grammar, and the nuances of lyrics *from scratch*, so the size of data was actually fairly limited to learn all of this information. Of course, with a character-level model, there would be much more data, since splitting up lyrics into 10 character sequences provides much more sample data to learn from, but with the added complication of learning spelling.
 
-If you’d like to view the full code, you can check it out on my github repository [here](https://github.com/frankiezeager/trap_generator). You can also try generating your own lyrics by using my Heroku app located [here (I've taken it down for cost reasons, but I'll be putting a less resource intense version up soon!)](http://trap-generator.zeager.xyz). 
+If you’d like to view the full code, you can check it out on my github repository [here](https://github.com/frankiezeager/trap_generator). If you'd like to test your trap knowledge by guessing which lyrics are computer generated, you can use the web app I created [here](http://trap-generator.zeager.xyz)(http://trap-generator.zeager.xyz). 
