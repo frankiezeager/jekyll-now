@@ -98,7 +98,7 @@ The problem with the simple, feed-forward vanilla neural network shown above for
 
 ![_config.yml]({{ site.baseurl }}/images/trap_images/4.png)
 
-Recurrent neural networks (RNN) try to solve the problem of learning over time that is present in a vanilla neural network. In a nutshell, the recurrent neural network takes information from the prior time steps and the current time step, where the feed-forward neural network can only take information from the current timestep. 
+Recurrent neural networks (RNN) try to solve the problem of learning over time that is present in a vanilla neural network. In a nutshell, the recurrent neural network takes information from the prior time steps and the current time step, where the feed-forward neural network classifies examples without taking into account previous inputs.
 
 ![_config.yml]({{ site.baseurl }}/images/trap_images/5.png)
 
